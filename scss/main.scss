@@ -2,27 +2,31 @@
 @import 'dragula';
 
 .alc-learn--container {
-  background-color: blue;
+  border: 1px solid gray;
   height: $container-height;
   width: $container-width;
 }
 
-#right, #left {
-  width: 200px;
+#alc-learn--night-out__left, #alc-learn--night-out__right {
   height: 100%;
   float: left;
 }
 
-#left {
-  background-color: red;
+#alc-learn--night-out__left {
+  box-shadow: 0px 0px 34px #000 inset;
+  width: 30%;
+  overflow: scroll;
+  background: url('https://cdn.shopify.com/s/files/1/1038/6230/products/Everpurse_Kate_Spade_Holiday_2016_Small_Harmony_Tote_Saffiano_leather_Everpurse_logo_Charging_bag_iPhone_Open_white_bd9a820f-04be-43e2-834e-9d695e185bb4.jpg?v=1488839112') no-repeat center;
+  background-size: 800px;
 }
 
-#right {
-  background-color: green;
+#alc-learn--night-out__right {
+  width: 70%;
 }
 
-#poo {
-  width: 40px;
-  height: 40px;
-  background-color: pink;
+.alc-learn--night-out__item {
+  border: 2px solid green;
+  float: left;
+  margin: 40px;
+  font-size: 40px;
 }
