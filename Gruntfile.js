@@ -13,6 +13,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
           'scripts/vendor/jquery-3.2.1.min.js',
+          'scripts/vendor/dragula.min.js',
           'scripts/main.js'
         ],
         dest: 'public/scripts/built.min.js',
@@ -33,8 +34,8 @@ module.exports = function(grunt) {
         }
       }
     },
-    sass: {                              // Task
-      dist: {                            // Target
+    sass: {
+      dist: {
         files: [{
           expand: true,
           cwd: 'scss',

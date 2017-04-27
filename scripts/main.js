@@ -1,7 +1,22 @@
 $(document).ready(function() {
-
-  // Only run script if element exists on page
   if ($('#alc-learn--night-out').length) {
-    console.log('Test')
+    // Night out script
+    dragula([document.querySelector('#left'), document.querySelector('#right')]);
+
+  }
+
+  if ($('#alc-learn--dialogue').length) {
+    // Dialogue script
+    var dialogue = {
+      comp: {
+        d1: 'Want to have sex?'
+
+      },
+      user: {
+        d2: [{
+
+        }]
+      }
+    }
   }
 });

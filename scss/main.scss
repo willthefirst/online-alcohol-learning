@@ -1,3 +1,28 @@
-#alc-learn--night-out {
-  background-color: blue;  
+@import 'variables';
+@import 'dragula';
+
+.alc-learn--container {
+  background-color: blue;
+  height: $container-height;
+  width: $container-width;
+}
+
+#right, #left {
+  width: 200px;
+  height: 100%;
+  float: left;
+}
+
+#left {
+  background-color: red;
+}
+
+#right {
+  background-color: green;
+}
+
+#poo {
+  width: 40px;
+  height: 40px;
+  background-color: pink;
 }
