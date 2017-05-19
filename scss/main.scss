@@ -31,8 +31,18 @@
 //
 
 #alc-learn--dialogue__comp, #alc-learn--dialogue__user {
+  display: none;
   float: left;
   border: 1px solid red;
   width: 200px;
   min-height: 80px;
+  padding: 18px;
+}
+
+#alc-learn--dialogue__comp {
+  background-color: #b9fffc;
+}
+
+#alc-learn--dialogue__user {
+  background-color: #acdeab;
 }
