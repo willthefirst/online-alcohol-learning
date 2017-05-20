@@ -50,4 +50,8 @@
 #alc-learn--dialogue__user {
   background-color: #acdeab; }
 
+#alc-learn--reorder__success {
+  display: none;
+  color: green; }
+
 /*# sourceMappingURL=main.css.map */

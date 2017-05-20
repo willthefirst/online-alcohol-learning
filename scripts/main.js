@@ -1,6 +1,5 @@
 $(document).ready(function() {
   var $nextButton = $('.module-sequence-footer-button--next');
-  var nightOutItemsMin = 3;
 
   function allowNext() {
     alert('Success!')
@@ -68,6 +67,8 @@ $(document).ready(function() {
     // Hide the next button
     $nextButton.hide();
 
+    var nightOutItemsMin = 3;
+
     // Make the elements draggable
     var drake = dragula([document.querySelector('.alc-learn--night-out__word-cloud'), document.querySelector('.alc-learn--night-out__response')]);
 
@@ -100,6 +101,7 @@ $(document).ready(function() {
     })
   }
 
+  // Dialogue 2 Script
   if ($('#alc-learn--dialogue__slide-two').length) {
     runDialogue({
       comp: {
@@ -128,6 +130,7 @@ $(document).ready(function() {
     })
   }
 
+  // Dialogue 3 Script
   if ($('#alc-learn--dialogue__slide-three').length) {
     runDialogue({
       comp: {
@@ -147,4 +150,30 @@ $(document).ready(function() {
       }
     })
   }
+
+  // Reorder script
+  if ($('#alc-learn--reorder').length) {
+    // Hide the next button
+    $nextButton.hide();
+    $successMessage = $('#alc-learn--reorder__success');
+
+    // Make the elements draggable
+    var drake = dragula([document.getElementById('alc-learn--reorder__list'), document.getElementById('alc-learn--reorder__list')]);
+
+    // On every drop, if bag has enough element, show next button.
+    drake.on('drop', function(el, target, source, sibling) {
+      var listItems = $('#alc-learn--reorder__list').children();
+      var currOrder = [];
+
+      for (var i = 0; i < listItems.length; i++) {
+        currOrder.push($(listItems[i]).data().order);
+      }
+
+      if (currOrder.toString() === currOrder.slice(0).sort().toString()) {
+        $successMessage.fadeIn(allowNext)
+      }
+    });
+
+  }
+
 });
