@@ -1,5 +1,19 @@
 $(document).ready(function() {
-  var $nextButton = $('.module-sequence-footer-button--next');
+  var $nextButton = {};
+  var checksMax = 5;
+
+  // Because of a race condition with Canvas, check for the next button about 5 times to hide it.
+  function hideNext(checkCurr) {
+    console.log('Checked for the next button ' + checkCurr + ' times.');
+    $nextButton = $('.module-sequence-footer-button--next');
+    $nextButton.hide();
+
+    if ($nextButton.length < 1 && checkCurr < checksMax) {
+      setTimeout(function () {
+        hideNext(checkCurr + 1);
+      }, 100);
+    }
+  }
 
   function allowNext() {
     alert('Success!')
@@ -9,7 +23,7 @@ $(document).ready(function() {
   // General dialogue sequence
   function runDialogue(dialogue) {
     // Hide the next button
-    $nextButton.hide();
+    hideNext(0);
 
     var $compDialogue = $('#alc-learn--dialogue__comp');
     var $userDialogue = $('#alc-learn--dialogue__user');
@@ -65,7 +79,7 @@ $(document).ready(function() {
   // Night out script
   if ($('.alc-learn--night-out').length) {
     // Hide the next button
-    $nextButton.hide();
+    hideNext(0);
 
     var nightOutItemsMin = 3;
 
@@ -154,7 +168,8 @@ $(document).ready(function() {
   // Reorder script
   if ($('#alc-learn--reorder').length) {
     // Hide the next button
-    $nextButton.hide();
+    hideNext(0);
+
     $successMessage = $('#alc-learn--reorder__success');
 
     // Make the elements draggable
@@ -173,7 +188,5 @@ $(document).ready(function() {
         $successMessage.fadeIn(allowNext)
       }
     });
-
   }
-
 });
