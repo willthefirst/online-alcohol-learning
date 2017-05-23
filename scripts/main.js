@@ -27,12 +27,15 @@ $(document).ready(function() {
 
     var $compDialogue = $('#alc-learn--dialogue__comp');
     var $userDialogue = $('#alc-learn--dialogue__user');
-    var delayTime = 500;
+    var delayTime = 100;
 
     // Whenever user selects a dialogue option, step the dialogue forward
-    $userDialogue.on('click', '.dialogue-option', stepForward)
+    $userDialogue.on('click', '.dialogue-option', function() {
+      var option = $(this).data().option;
+      stepForward(option)
+    })
 
-    function insertNext() {
+    function insertNext(prevChoice) {
       // Set computer prompt
       $compDialogue
       .html(dialogue.comp[currStep])
@@ -43,10 +46,17 @@ $(document).ready(function() {
           // If no options left, we've reached the end of the dialogue.
           allowNext();
         } else {
+          // If next step has conditional dialogue, manipulate the dialogue array
+          if (Array.isArray(dialogue.user[currStep][0])) {
+            // set currStep to the appropriate array within currStep
+            console.log(dialogue.user);
+            dialogue.user[currStep] = dialogue.user[currStep][prevChoice]
+          }
+
           // Populate reponse options
-          dialogue.user[currStep].forEach(function(option) {
+          dialogue.user[currStep].forEach(function(option, key) {
             $userDialogue
-            .append("<button class='dialogue-option'>" + option + "</button>")
+            .append("<button class='dialogue-option' data-option=" + key + ">" + option + "</button>")
           })
 
           // Fade reponse options in
@@ -58,17 +68,17 @@ $(document).ready(function() {
       })
     }
 
-    function stepForward() {
+    function stepForward(option) {
       // If not initial step, clear dialogue from both comp and user
       if (currStep > 0) {
         $('.alc-learn--dialogue__both').fadeOut({
           queue: false
         }).empty().promise().done(function () {
           // Need promise so that callback only fires once https://stackoverflow.com/questions/8793246/jquery-animate-multiple-elements-but-only-fire-callback-once
-          insertNext()
+          insertNext(option)
         });
       } else {
-        insertNext()
+        insertNext(option)
       }
     }
 
@@ -136,13 +146,28 @@ $(document).ready(function() {
           'I’m actually heading out. Next time though?'
         ],
         1: [
-          'I don’t actually drink, but I like hanging out with you guys.',
-          'I would, but I’m feeling pretty good about this beer.',
-          'Me either, but I’ll catch you this weekend.'
+          [
+            "I’m still gonna hang, but I actually don’t drink.",
+            "Nah, I’m tryna hook up tonight.",
+            "I’m heading out. Maybe next time.",
+            "Nope, not tonight."
+          ],
+          [
+            "I would, but I’m feeling pretty good about this beer.",
+            "I’m chillin’. I’ve got stuff to do tomorrow.",
+            "Nah, I’m tryna hook up tonight.",
+            "I’m heading out. Maybe next time."
+          ],
+          [
+            "Me either, but I’ll catch you this weekend.",
+            "Nah, I’m tryna hook up tonight.",
+            "Way too tired. See ya around."
+          ]
         ]
       }
     })
   }
+
 
   // Dialogue 3 Script
   if ($('#alc-learn--dialogue__slide-three').length) {
