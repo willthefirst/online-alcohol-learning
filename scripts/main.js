@@ -20,72 +20,78 @@ $(document).ready(function() {
     $nextButton.show();
   }
 
-  // General dialogue sequence
   function runDialogue(dialogue) {
-    // Hide the next button
-    hideNext(0);
-
-    var $compDialogue = $('#alc-learn--dialogue__comp');
-    var $userDialogue = $('#alc-learn--dialogue__user');
-    var delayTime = 100;
-
-    // Whenever user selects a dialogue option, step the dialogue forward
-    $userDialogue.on('click', '.dialogue-option', function() {
-      var option = $(this).data().option;
-      stepForward(option)
-    })
-
-    function insertNext(prevChoice) {
-      // If we've reached the end
-
-
-      // Set computer prompt
-      $compDialogue
-      .html(dialogue.comp[currStep])
-      .delay(delayTime)
-      .fadeIn(function() {
-        // Set user reponse options
-        if (!dialogue.user[currStep]) {
-          // If no options left, we've reached the end of the dialogue.
-          allowNext();
-        } else {
-          // If next step has conditional dialogue, manipulate the dialogue array
-          if (Array.isArray(dialogue.user[currStep][0])) {
-            // set currStep to the appropriate array within currStep
-            dialogue.user[currStep] = dialogue.user[currStep][prevChoice]
-          }
-
-          // Populate reponse options
-          dialogue.user[currStep].forEach(function(option, key) {
-            $userDialogue
-            .append("<button class='dialogue-option' data-option=" + key + ">" + option + "</button>")
-          })
-
-          // Fade reponse options in
-          $userDialogue.delay(delayTime).fadeIn()
-        }
-
-        // Prepare for next step of dialogue
-        currStep++;
-      })
-    }
-
-    function stepForward(option) {
+    function stepForward() {
       // If not initial step, clear dialogue from both comp and user
-      if (currStep > 0) {
+      if (currLine > 0) {
         $('.alc-learn--dialogue__both').fadeOut({
           queue: false
         }).empty().promise().done(function () {
           // Need promise so that callback only fires once https://stackoverflow.com/questions/8793246/jquery-animate-multiple-elements-but-only-fire-callback-once
-          insertNext(option)
+          insertNext()
         });
       } else {
-        insertNext(option)
+        insertNext()
       }
     }
 
-    var currStep = 0;
-    stepForward();
+    function insertNext() {
+      // If there's a prompt, show it and the available answers
+      if (dialogue[currLine].prompt) {
+        $promptDialogue
+        .html(dialogue[currLine].prompt)
+        .delay(delayTime)
+        .fadeIn(function() {
+          // Populate reponse options
+          dialogue[currLine].answers.forEach(function(answer) {
+            $answersDialogue
+            .append("<button class='dialogue-option' data-next_label=" + answer.next + ">" + answer.m + "</button>")
+          })
+
+          // Fade reponse options in
+          $answersDialogue.delay(delayTime).fadeIn()
+
+          // Prepare for next step of dialogue
+          currLine++;
+        })
+      } else if (dialogue[currLine].moral) {
+        // If it's the moral, we've reached the end
+        $moralDialogue
+          .html(dialogue[currLine].moral)
+          .delay(delayTime)
+          .fadeIn(function() {
+            allowNext();
+          })
+      }
+    }
+
+    // Hide the next button
+    hideNext(0);
+
+    var $promptDialogue = $('#alc-learn--dialogue__prompt');
+    var $answersDialogue = $('#alc-learn--dialogue__answers');
+    var $moralDialogue = $('#alc-learn--dialogue__moral');
+    var delayTime = 100;
+    var currLine = 0;
+
+    // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
+    $answersDialogue.on('click', '.dialogue-option', function() {
+      var nextLabel = $(this).data().next_label;
+
+      // If there's a specific response to the given answer, find it in dialogue array and update currLine to match
+      if (nextLabel) {
+        for (var line in dialogue) {
+          if (dialogue[line].label === nextLabel) {
+            currLine = line;
+          }
+        }
+      } else {
+        currLine++
+      }
+      stepForward(currLine);
+    })
+
+    stepForward(currLine);
   }
 
   // Night out script
@@ -108,93 +114,165 @@ $(document).ready(function() {
 
   // Dialogue 1 Script
   if ($('#alc-learn--dialogue__slide-one').length) {
-    runDialogue({
-      comp: {
-        0: [
-          'Hey, I’m tired AF. Wanna go head back to our suite?'
-        ],
-        1: [
-          [
-            'You don’t have be the ones to shut down the party!  If you’re ready to leave, do it.  You could head back to your suite to catch up on your favorite shows – or better yet, actually get some sleep.',
-            'That’s great! At Yale we look out for each other. It’s fine if you don’t want to leave when your friend does, but make sure they have a way to get home safely.  Remember you can always call the Yale Nighttime Shuttle, which takes students door-to-door from 6pm to 6am.',
-            'That’s great! At Yale we look out for each other. And just because you’ve left a party, it doesn’t need to be the end of your night.  Get food (your froco may be serving late-night pancakes!), watch a movie, just hang.'
-          ]
+    runDialogue([
+      {
+        prompt: 'Hey I’m tired AF. Wanna head back to our suite?',
+        answers: [
+          {
+            m: 'Yeah, totally. I’m pretty tired too.',
+            next: 'tired_agree'
+          },
+          {
+            m: 'The music just got good! But I heard Cory wanted to head out.  Let’s see if you two can walk home together.',
+            next: 'tired_cory'
+
+          },
+          {
+            m: 'Sure. Can we stop for food on the way?',
+            next: 'tired_food'
+          }
         ]
       },
-      user: {
-        0: [
-          'Yeah, totally. I’m pretty tired to and I’ve got a PSET due tomorrow.',
-          'The music just got good! But I can walk back with you if no one else is.',
-          'Sure. Can we stop for food on the way?'
-        ]
+      {
+        label: 'tired_agree',
+        moral: 'You don’t have be the ones to shut down the party!  If you’re ready to leave, do it.  You could head back to your suite to catch up on your favorite shows – or better yet, actually get some sleep.'
       },
-      moral: {}
-    })
+      {
+        label: 'tired_cory',
+        moral: 'That’s great! At Yale we look out for each other. It’s fine if you don’t want to leave when your friend does, but make sure they have a way to get home safely.  Remember you can always call the Yale Nighttime Shuttle, which takes students door-to-door from 6pm to 6am.'
+      },
+      {
+        label: 'tired_food',
+        moral: 'That’s great! At Yale we look out for each other. And just because you’ve left a party, it doesn’t need to be the end of your night.  Get food (your froco may be serving late-night pancakes!), watch a movie, just hang.'
+      }
+    ])
   }
 
   // Dialogue 2 Script
   if ($('#alc-learn--dialogue__slide-two').length) {
-    runDialogue({
-      comp: {
-        0: [
-          'Hey we’re all doing shots. Take one!'
-        ],
-        1: [
-          'C’mon, we don’t want you to miss out!'
-        ],
-        2: [
-          'People set limits on their drinking or choose not to drink for a variety of reasons. These reasons can change and evolve over time. Thinking about what you want to get out of your night can prepare you to make decisions in the moment.'
-        ]
-      },
-      user: {
-        0: [
-          'Oh, no thanks. I’m good.',
-          'Nahh. I said I was going to stick to one beer tonight.',
-          'I’m actually heading out. Next time though?'
-        ],
-        1: [
-          [
-            "I’m still gonna hang, but I actually don’t drink.",
-            "Nah, I’m tryna hook up tonight.",
-            "I’m heading out. Maybe next time.",
-            "Nope, not tonight."
-          ],
-          [
-            "I would, but I’m feeling pretty good about this beer.",
-            "I’m chillin’. I’ve got stuff to do tomorrow.",
-            "Nah, I’m tryna hook up tonight.",
-            "I’m heading out. Maybe next time."
-          ],
-          [
-            "Me either, but I’ll catch you this weekend.",
-            "Nah, I’m tryna hook up tonight.",
-            "Way too tired. See ya around."
+    runDialogue(
+      [
+        {
+          prompt: 'Hey we’re all doing shots. Take one!',
+          answers: [
+            {
+              m: 'Oh, no thanks. I’m good.',
+              next: 'shots_good'
+            },
+            {
+              m: 'Nahh. I said I was going to stick to one beer tonight.',
+              next: 'shots_beer'
+            },
+            {
+              m: 'I’m actually heading out. Next time though?',
+              next: 'shots_leaving'
+            }
           ]
-        ]
-      }
-    })
+        },
+        {
+          label: 'shots_good',
+          prompt: 'C’mon, we don’t want you to miss out!',
+          answers: [
+            {
+              m: "I’m still gonna hang, but I actually don’t drink.",
+              next: 'shots_moral'
+            },
+            {
+              m: "Nah, I’m tryna hook up tonight.",
+              next: 'shots_moral'
+            },
+            {
+              m: "I’m heading out. Maybe next time.",
+              next: 'shots_moral'
+            },
+            {
+              m: "Nope, not tonight.",
+              next: 'shots_moral'
+            }
+          ]
+        },
+        {
+          label: 'shots_beer',
+          prompt: 'C’mon, we don’t want you to miss out!',
+          answers: [
+            {
+              m: "I would, but I’m feeling pretty good about this beer.",
+              next: 'shots_moral'
+            },
+            {
+              m: "I’m chillin’. I’ve got stuff to do tomorrow.",
+              next: 'shots_moral'
+            },
+            {
+              m: "Nah, I’m tryna hook up tonight.",
+              next: 'shots_moral'
+            },
+            {
+              m: "I’m heading out, maybe next time?",
+              next: 'shots_moral'
+            }
+          ]
+        },
+        {
+          label: 'shots_leaving',
+          prompt: 'C’mon, we don’t want you to miss out!',
+          answers: [
+            {
+              m: "Me either, but I’ll catch you this weekend.",
+              next: 'shots_moral'
+            },
+            {
+              m: "Nah, I’m tryna hook up tonight.",
+              next: 'shots_moral'
+            },
+            {
+              m: "Way too tired. See ya around.",
+              next: 'shots_moral'
+            }
+          ]
+        },
+        {
+          label: 'shots_moral',
+          moral: 'People set limits on their drinking or choose not to drink for a variety of reasons. These reasons can change and evolve over time. Thinking about what you want to get out of your night can prepare you to make decisions in the moment.'
+        }
+      ]
+    )
   }
-
 
   // Dialogue 3 Script
   if ($('#alc-learn--dialogue__slide-three').length) {
-    runDialogue({
-      comp: {
-        0: [
-          'This week sucked. I’m going so hard tonight. Can’t wait to turn up.'
-        ],
-        1: [
-          'Alcohol isn’t a great coping mechanism. Yale has many resources, including your residential college Dean and FroCo, to help students who are stressed for any reason.'
+    runDialogue([
+      {
+        prompt: 'This week sucked. I’m going so hard tonight. Can’t wait to turn up.',
+        answers: [
+          {
+            m: 'Wow. Sounds like you could actually use a low key night. Want to stay in instead?',
+            next: 'hard_stay'
+          },
+          {
+            m: 'I’m pumped for tonight too. Let’s get dinner and talk about your week before we go.',
+            next: 'hard_dinner'
+
+          },
+          {
+            m: 'I want you to let out some steam, for sure.  But you’ve been feeling this way a lot lately.  I’m kind of worried about you.',
+            next: 'hard_steam'
+          }
         ]
       },
-      user: {
-        0: [
-          'Wow. Sounds like you could use a low key night. Want to stay in instead?',
-          'I’m pumped for tonight too. But, let’s get dinner and talk about your week before we go.',
-          'I want you to let out some steam, but are you sure getting trashed will make you feel better?'
-        ]
+      {
+        label: 'hard_stay',
+        moral: 'it’s worrying – you might not feel like you can address it directly, but proposing alternatives can help.  resources… '
+      },
+      {
+        label: 'hard_dinner',
+        moral: 'okay to party – but it sounds like your friend needs help in a way that alcohol can’t provide --  parties are often not the best places for support – make time beforehand to find out what’s going on with your friend -- '
+      },
+      {
+        label: 'hard_steam',
+        moral: 'sometimes it’s good to share your concern out loud – you might be validating your friend’s own worries, and help them take positive steps. resources are… '
       }
-    })
+    ])
   }
 
   // Reorder script

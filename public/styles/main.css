@@ -38,7 +38,7 @@
   margin: 10px;
   font-size: 18px; }
 
-#alc-learn--dialogue__comp, #alc-learn--dialogue__user {
+#alc-learn--dialogue__prompt, #alc-learn--dialogue__answers {
   display: none;
   float: left;
   border: 1px solid red;
@@ -46,11 +46,18 @@
   min-height: 80px;
   padding: 18px; }
 
-#alc-learn--dialogue__comp {
+#alc-learn--dialogue__prompt {
   background-color: #b9fffc; }
 
-#alc-learn--dialogue__user {
+#alc-learn--dialogue__answers {
   background-color: #acdeab; }
+
+#alc-learn--dialogue__moral {
+  display: none;
+  color: #fff;
+  background-color: purple;
+  font-size: 28px;
+  text-align: center; }
 
 #alc-learn--reorder__success {
   display: none;
