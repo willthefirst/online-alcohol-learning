@@ -36,6 +36,9 @@ $(document).ready(function() {
     })
 
     function insertNext(prevChoice) {
+      // If we've reached the end
+
+
       // Set computer prompt
       $compDialogue
       .html(dialogue.comp[currStep])
@@ -49,7 +52,6 @@ $(document).ready(function() {
           // If next step has conditional dialogue, manipulate the dialogue array
           if (Array.isArray(dialogue.user[currStep][0])) {
             // set currStep to the appropriate array within currStep
-            console.log(dialogue.user);
             dialogue.user[currStep] = dialogue.user[currStep][prevChoice]
           }
 
@@ -98,7 +100,7 @@ $(document).ready(function() {
 
     // On every drop, if bag has enough element, show next button.
     drake.on('drop', function(el, target, source, sibling) {
-      if ($('.alc-learn--night-out__response').children().length > nightOutItemsMin) {
+      if ($('.alc-learn--night-out__response').children().length >= nightOutItemsMin) {
         allowNext();
       }
     });
@@ -112,7 +114,11 @@ $(document).ready(function() {
           'Hey, I’m tired AF. Wanna go head back to our suite?'
         ],
         1: [
-          'That\'s great! At Yale we look out for each other. Make sure you and your friends have a plan for getting home safely.'
+          [
+            'You don’t have be the ones to shut down the party!  If you’re ready to leave, do it.  You could head back to your suite to catch up on your favorite shows – or better yet, actually get some sleep.',
+            'That’s great! At Yale we look out for each other. It’s fine if you don’t want to leave when your friend does, but make sure they have a way to get home safely.  Remember you can always call the Yale Nighttime Shuttle, which takes students door-to-door from 6pm to 6am.',
+            'That’s great! At Yale we look out for each other. And just because you’ve left a party, it doesn’t need to be the end of your night.  Get food (your froco may be serving late-night pancakes!), watch a movie, just hang.'
+          ]
         ]
       },
       user: {
@@ -121,7 +127,8 @@ $(document).ready(function() {
           'The music just got good! But I can walk back with you if no one else is.',
           'Sure. Can we stop for food on the way?'
         ]
-      }
+      },
+      moral: {}
     })
   }
 

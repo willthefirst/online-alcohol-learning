@@ -28,7 +28,9 @@
 .alc-learn--night-out__response {
   min-width: 100px;
   border-bottom: 1px solid green;
-  display: inline-block; }
+  display: inline-block;
+  height: 30px;
+  padding: 8px 4px; }
 
 .alc-learn--night-out__item {
   border: 2px solid green;
