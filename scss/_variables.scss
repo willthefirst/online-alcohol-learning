@@ -1,2 +1,60 @@
 $container-height: 500px;
 $container-width: 800px;
+
+// Colors
+
+$blue: #1C63C4;
+$blue-light: #C9FDFA;
+$teal: #72BBB6;
+$yellow: #EFCE20;
+$green: #667431;
+$rose: #9D1A38;
+$peach: #DF6660;
+$purple: #F8AEFE;
+$white-blue: #EAFFFF;
+$tan: #ECDFA4;
+$neon: #76FEA7;
+
+.yoac-blue {
+  color: $blue;
+}
+
+.yoac-blue-light {
+  color: $blue-light;
+}
+
+.yoac-teal {
+  color: $teal;
+}
+
+.yoac-yellow {
+  color: $yellow;
+}
+
+.yoac-green {
+  color: $green;
+}
+
+.yoac-rose {
+  color: $rose;
+}
+
+.yoac-peach {
+  color: $peach;
+}
+
+.yoac-purple {
+  color: $purple;
+}
+
+.yoac-white-blue {
+  color: $white-blue;
+}
+
+.yoac-tan {
+  color: $tan;
+}
+
+.yoac-neon {
+  color: $neon;
+}

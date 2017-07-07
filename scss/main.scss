@@ -5,27 +5,45 @@
   border: 1px solid gray;
   height: $container-height;
   width: $container-width;
+  font-family: Arial, sans-serif;
+  background-color: $teal;
+  color: blue;
+  padding: 24px;
+  box-sizing: border-box;
+  font-size: 24px;
 }
 
+.gu-mirror {
+  font-family: arial;
+  color: initial;
+}
 //
 // Module: Night Out
 //
 
 .alc-learn--night-out__response {
   min-width: 100px;
-  border-bottom: 1px solid green;
+  border-bottom: 3px solid $blue;
   display: inline-block;
   height: 30px;
-  padding: 8px 4px;
+  padding: 0px 4px 19px;
+  margin: 0;
 }
 
 .alc-learn--night-out__item {
-  border: 2px solid green;
-  float: left;
-  margin: 10px;
-  font-size: 18px;
+  // float: left;
+  margin: 16px 16px 16px 0;
+  font-size: 30px;
+  line-height: 60px;
+  padding: 4px 8px;
+  position: relative;
 }
 
+.alc-learn--night-out__word-cloud {
+  text-align: center;
+  // background-color: red;
+  // padding: 8px;
+}
 
 //
 // Module: Dialogue
@@ -64,4 +82,27 @@
 #alc-learn--reorder__success {
   display: none;
   color: green;
+}
+
+//
+// David's additional styles
+//
+
+/* no right side nav */
+.with-right-side #right-side-wrapper {
+    /*display: none; */
+}
+
+
+.pages .header-bar-outer-container {
+    display: none;
+}
+
+#course_show_secondary{
+    display: none;
+}
+
+#right-side > div.events_list.coming_up{
+    display: none;
+
 }

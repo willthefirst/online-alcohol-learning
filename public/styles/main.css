@@ -1,3 +1,36 @@
+.yoac-blue {
+  color: #1C63C4; }
+
+.yoac-blue-light {
+  color: #C9FDFA; }
+
+.yoac-teal {
+  color: #72BBB6; }
+
+.yoac-yellow {
+  color: #EFCE20; }
+
+.yoac-green {
+  color: #667431; }
+
+.yoac-rose {
+  color: #9D1A38; }
+
+.yoac-peach {
+  color: #DF6660; }
+
+.yoac-purple {
+  color: #F8AEFE; }
+
+.yoac-white-blue {
+  color: #EAFFFF; }
+
+.yoac-tan {
+  color: #ECDFA4; }
+
+.yoac-neon {
+  color: #76FEA7; }
+
 .gu-mirror {
   position: fixed !important;
   margin: 0 !important;
@@ -23,20 +56,35 @@
 .alc-learn--container {
   border: 1px solid gray;
   height: 500px;
-  width: 800px; }
+  width: 800px;
+  font-family: Arial, sans-serif;
+  background-color: #72BBB6;
+  color: blue;
+  padding: 24px;
+  box-sizing: border-box;
+  font-size: 24px; }
+
+.gu-mirror {
+  font-family: arial;
+  color: initial; }
 
 .alc-learn--night-out__response {
   min-width: 100px;
-  border-bottom: 1px solid green;
+  border-bottom: 3px solid #1C63C4;
   display: inline-block;
   height: 30px;
-  padding: 8px 4px; }
+  padding: 0px 4px 19px;
+  margin: 0; }
 
 .alc-learn--night-out__item {
-  border: 2px solid green;
-  float: left;
-  margin: 10px;
-  font-size: 18px; }
+  margin: 16px 16px 16px 0;
+  font-size: 30px;
+  line-height: 60px;
+  padding: 4px 8px;
+  position: relative; }
+
+.alc-learn--night-out__word-cloud {
+  text-align: center; }
 
 #alc-learn--dialogue__prompt, #alc-learn--dialogue__answers {
   display: none;
@@ -62,5 +110,18 @@
 #alc-learn--reorder__success {
   display: none;
   color: green; }
+
+/* no right side nav */
+.with-right-side #right-side-wrapper {
+  /*display: none; */ }
+
+.pages .header-bar-outer-container {
+  display: none; }
+
+#course_show_secondary {
+  display: none; }
+
+#right-side > div.events_list.coming_up {
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */

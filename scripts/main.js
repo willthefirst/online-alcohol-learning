@@ -57,11 +57,11 @@ $(document).ready(function() {
       } else if (dialogue[currLine].moral) {
         // If it's the moral, we've reached the end
         $moralDialogue
-          .html(dialogue[currLine].moral)
-          .delay(delayTime)
-          .fadeIn(function() {
-            allowNext();
-          })
+        .html(dialogue[currLine].moral)
+        .delay(delayTime)
+        .fadeIn(function() {
+          allowNext();
+        })
       }
     }
 
@@ -96,6 +96,20 @@ $(document).ready(function() {
 
   // Night out script
   if ($('.alc-learn--night-out').length) {
+    var colors = [
+      'blue',
+      'blue-light',
+      'teal',
+      'yellow',
+      'green',
+      'rose',
+      'peach',
+      'purple',
+      'white-blue',
+      'tan',
+      'neon'
+    ];
+
     // Hide the next button
     hideNext(0);
 
@@ -110,6 +124,13 @@ $(document).ready(function() {
         allowNext();
       }
     });
+
+    $('.alc-learn--night-out__item').each(function(one, two) {
+      $(this).css({
+        top: -(Math.random() * 15),
+        left: (Math.random() * 20),
+      }).addClass('yoac-' + colors[Math.floor(Math.random()*colors.length)]);
+    })
   }
 
   // Dialogue 1 Script
