@@ -99,7 +99,6 @@ $(document).ready(function() {
     var colors = [
       'blue',
       'blue-light',
-      'teal',
       'yellow',
       'green',
       'rose',
@@ -125,10 +124,15 @@ $(document).ready(function() {
       }
     });
 
+    // Shift position slightly and change color of each item
     $('.alc-learn--night-out__item').each(function(one, two) {
+      var xChange = Math.random() * 20;
+      var yChange = -(Math.random() * 20);
+
       $(this).css({
-        top: -(Math.random() * 15),
-        left: (Math.random() * 20),
+        '-webkit-transform': 'translate(' + xChange + 'px, ' + yChange + 'px)',
+        'transform': 'translate(' + xChange + 'px, ' + yChange + 'px)',
+
       }).addClass('yoac-' + colors[Math.floor(Math.random()*colors.length)]);
     })
   }

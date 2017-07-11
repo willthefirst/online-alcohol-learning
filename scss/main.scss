@@ -3,14 +3,14 @@
 
 .alc-learn--container {
   border: 1px solid gray;
-  height: $container-height;
+  min-height: $container-height;
   width: $container-width;
   font-family: Arial, sans-serif;
   background-color: $teal;
   color: blue;
   padding: 24px;
   box-sizing: border-box;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .gu-mirror {
@@ -20,23 +20,38 @@
 //
 // Module: Night Out
 //
+.alc-learn--night-out__prompt {
+  margin-top: 0;
+  margin-bottom: 50px;
+}
 
 .alc-learn--night-out__response {
-  min-width: 100px;
+  min-width: 300px;
   border-bottom: 3px solid $blue;
   display: inline-block;
   height: 30px;
   padding: 0px 4px 19px;
   margin: 0;
+  vertical-align: bottom;
+
+  .alc-learn--night-out__item {
+    margin: 0;
+    line-height: 60px;
+    -webkit-transform: translate(0px, 0px) !important;
+    transform: translate(0px, 0px) !important;
+  }
 }
 
 .alc-learn--night-out__item {
-  // float: left;
+  display: inline-block;
   margin: 16px 16px 16px 0;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 60px;
   padding: 4px 8px;
   position: relative;
+  transition: -webkit-transform .2s, transform .2s;
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
 }
 
 .alc-learn--night-out__word-cloud {
