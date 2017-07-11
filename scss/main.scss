@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'dragula';
+@import 'simple-grid';
 
 .alc-learn--container {
   border: 1px solid gray;
@@ -100,6 +101,30 @@
 }
 
 //
+// Module: Storyboard
+//
+
+#alc-learn-storyboard__strip {
+  height: 210px;
+  background-color: rgba(206, 206, 206, 0.39);
+  border-radius: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+  box-shadow: 0 19px 16px $teal;
+  z-index: 10;
+}
+
+#alc-learn-storyboard__icon-container {
+  height: 300px;
+  overflow: scroll;
+}
+
+.alc-learn-storyboard__thumb {
+  max-width: 100%;
+}
+
+
+//
 // David's additional styles
 //
 
@@ -113,7 +138,7 @@
     display: none;
 }
 
-#course_show_secondary{
+#course_show_secondary {
     display: none;
 }
 

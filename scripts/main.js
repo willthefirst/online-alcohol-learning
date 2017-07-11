@@ -324,4 +324,21 @@ $(document).ready(function() {
       }
     });
   }
+
+  if ($('#alc-learn--storyboard').length) {
+    // Hide the next button
+    hideNext(0);
+
+    var storyboardMin = 4;
+
+    // Make the elements draggable
+    var drake = dragula([document.getElementById('alc-learn-storyboard__icon-container'), document.getElementById('alc-learn-storyboard__strip')]);
+
+    // On every drop, if bag has enough element, show next button.
+    drake.on('drop', function(el, target, source, sibling) {
+      if ($('#alc-learn-storyboard__strip').children().length >= storyboardMin) {
+        allowNext();
+      }
+    });
+  }
 });
