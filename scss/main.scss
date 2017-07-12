@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'dragula';
 @import 'simple-grid';
+@import 'mixins';
 
 .alc-learn--container {
   border: 1px solid gray;
@@ -8,7 +9,7 @@
   width: $container-width;
   font-family: Arial, sans-serif;
   background-color: $teal;
-  color: blue;
+  color: $blue;
   padding: 24px;
   box-sizing: border-box;
   font-size: 22px;
@@ -41,6 +42,9 @@
     -webkit-transform: translate(0px, 0px) !important;
     transform: translate(0px, 0px) !important;
   }
+
+
+
 }
 
 .alc-learn--night-out__item {
@@ -57,39 +61,169 @@
 
 .alc-learn--night-out__word-cloud {
   text-align: center;
-  // background-color: red;
-  // padding: 8px;
 }
 
 //
 // Module: Dialogue
 //
 
+#alc-learn--dialogue__slide-two {
+  height: 800px;
+  overflow: scroll;
+}
+
 #alc-learn--dialogue__prompt, #alc-learn--dialogue__answers {
-  display: none;
-  float: left;
-  border: 1px solid red;
-  width: 200px;
-  min-height: 80px;
-  padding: 18px;
+  .talk-bubble {
+    display: none;
+  }
 }
 
 #alc-learn--dialogue__prompt {
-  background-color: #b9fffc;
+  .talk-bubble {
+    @include bubble-color($green, $blue-light);
+  }
 }
 
 #alc-learn--dialogue__answers {
-  background-color: #acdeab;
+  padding-top: 100px;
+}
+
+#alc-learn--dialogue__answers {
+  .talk-bubble {
+    cursor: pointer;
+  }
+
+  .talk-bubble__color-1 {
+    @include bubble-color($tan, $rose);
+  }
+  .talk-bubble__color-2 {
+    @include bubble-color($rose, $neon);
+  }
+  .talk-bubble__color-3 {
+    @include bubble-color($peach, $rose);
+  }
+  .talk-bubble__color-4 {
+    @include bubble-color($yellow, $green);
+  }
 }
 
 #alc-learn--dialogue__moral {
   display: none;
-  color: #fff;
-  background-color: purple;
   font-size: 28px;
+  color: $blue;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: center;
+  border: 8px solid $blue;
+  border-radius: 8px;
 }
 
+// Dialogue bubble code taken from https://codepen.io/Founts/pen/gmhcl
+
+.talk-bubble {
+	margin: 40px auto 60px;
+  display: inline-block;
+  position: relative;
+	width: 80%;
+  padding-left: 10px;
+	height: auto;
+  border: 8px solid;
+  border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+
+  .yoac-choose {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    margin-top: -19px;
+    animation: back-and-forth 1s ease-out infinite;
+  }
+
+  &.yoac__selected {
+    .yoac-choose {
+      display: none;
+    }
+  }
+}
+
+/* The animation code */
+@keyframes back-and-forth {
+    from {
+      -webkit-transform: translateX(0)
+    }
+    50% {
+      -webkit-transform: translateX(-5px)
+    }
+    100% {
+      -webkit-transform: translateX(0)
+    }
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+
+.tri-right.border.btm-left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: $green transparent transparent $green;
+}
+.tri-right.btm-left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 38px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: $green transparent transparent $green;
+}
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 30px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: $green $green transparent transparent;
+}
+
+.tri-right.btm-right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 38px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: $green $green transparent transparent;
+}
+
+/* talk bubble contents */
+.talktext {
+  padding: 1em;
+	text-align: left;
+  line-height: 1.5em;
+}
+
+.talktext p {
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
 
 //
 // Module: Reorder

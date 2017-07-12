@@ -39,25 +39,35 @@ $(document).ready(function() {
       // If there's a prompt, show it and the available answers
       if (dialogue[currLine].prompt) {
         $promptDialogue
-        .html(dialogue[currLine].prompt)
+        .append(
+          '<div class="talk-bubble tri-right border round btm-left-in"><p>' +  dialogue[currLine].prompt + '</p></div>')
         .delay(delayTime)
-        .fadeIn(function() {
+        .children()
+        .fadeIn().promise().done(function () {
+          // Need promise so that callback only fires once https://stackoverflow.com/questions/8793246/jquery-animate-multiple-elements-but-only-fire-callback-once
+
+          var colorSchemes = [
+            'talk-bubble__color-1',
+            'talk-bubble__color-2',
+            'talk-bubble__color-3',
+            'talk-bubble__color-4',
+          ];
+
           // Populate reponse options
           dialogue[currLine].answers.forEach(function(answer) {
             $answersDialogue
-            .append("<button class='dialogue-option' data-next_label=" + answer.next + ">" + answer.m + "</button>")
+            .append('<div class="dialogue-option talk-bubble tri-right border round btm-right-in ' + colorSchemes.splice(Math.random() * colorSchemes.length, 1) + '" data-next_label=' + answer.next + '><p>' + answer.m + '</p><div class="yoac-choose"> < </div></div>')
           })
 
           // Fade reponse options in
-          $answersDialogue.delay(delayTime).fadeIn()
-
+          $answersDialogue.delay(delayTime).children().fadeIn()
           // Prepare for next step of dialogue
           currLine++;
         })
       } else if (dialogue[currLine].moral) {
         // If it's the moral, we've reached the end
         $moralDialogue
-        .html(dialogue[currLine].moral)
+        .html('<h3>' + dialogue[currLine].moral+ '</h3>')
         .delay(delayTime)
         .fadeIn(function() {
           allowNext();
@@ -71,24 +81,39 @@ $(document).ready(function() {
     var $promptDialogue = $('#alc-learn--dialogue__prompt');
     var $answersDialogue = $('#alc-learn--dialogue__answers');
     var $moralDialogue = $('#alc-learn--dialogue__moral');
-    var delayTime = 100;
+    var delayTime = 400;
     var currLine = 0;
 
     // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
     $answersDialogue.on('click', '.dialogue-option', function() {
       var nextLabel = $(this).data().next_label;
+      // Fade out dialogue that user has not selected
+      $(this)
+      .addClass('yoac__selected')
+      .siblings()
+      .not('.yoac__selected')
+      .fadeOut({
+        queue: false
+      }).promise().done(function () {
+        // Need promise so that callback only fires once https://stackoverflow.com/questions/8793246/jquery-animate-multiple-elements-but-only-fire-callback-once
 
-      // If there's a specific response to the given answer, find it in dialogue array and update currLine to match
-      if (nextLabel) {
-        for (var line in dialogue) {
-          if (dialogue[line].label === nextLabel) {
-            currLine = line;
+        // Remove talk bubbles that were not selected from DOM
+        $(this).remove()
+
+        // If there's a specific response to the given answer, find it in dialogue array and update currLine to match
+        if (nextLabel) {
+          for (var line in dialogue) {
+            if (dialogue[line].label === nextLabel) {
+              currLine = line;
+            }
           }
+        } else {
+          currLine++
         }
-      } else {
-        currLine++
-      }
-      stepForward(currLine);
+        console.log('abgm');
+        stepForward(currLine);
+      });
+
     })
 
     stepForward(currLine);

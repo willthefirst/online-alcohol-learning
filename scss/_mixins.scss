@@ -1,0 +1,23 @@
+@mixin bubble-color($bg, $text) {
+  background-color: $bg;
+  border-color: $bg;
+  color: $text;
+
+  &.tri-right.border.btm-left-in:before {
+    border-color: $bg transparent transparent $bg;
+  }
+  &.tri-right.btm-left-in:after{
+    border-color: $bg transparent transparent $bg;
+  }
+  /*Right triangle, placed bottom right side slightly in*/
+  &.tri-right.border.btm-right-in:before {
+    border-color: $bg $bg transparent transparent;
+  }
+  &.tri-right.btm-right-in:after{
+    border-color: $bg $bg transparent transparent;
+  }
+
+  .yoac-choose {
+    color: $bg;
+  }
+}
