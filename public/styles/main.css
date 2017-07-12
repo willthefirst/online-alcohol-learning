@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic);
 .yoac-blue {
   color: #3166C7; }
 
@@ -54,52 +53,6 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20); }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  left: 0;
-  top: 0;
-  font-size: 100%; }
-
-* {
-  font-family: Helvetica, sans-serif;
-  line-height: 1.5; }
-
-h1 {
-  font-size: 2.5rem; }
-
-h2 {
-  font-size: 2rem; }
-
-h3 {
-  font-size: 1.375rem; }
-
-h4 {
-  font-size: 1.125rem; }
-
-h5 {
-  font-size: 1rem; }
-
-h6 {
-  font-size: 0.875rem; }
-
-p {
-  font-size: 1.125rem;
-  font-weight: 200;
-  line-height: 1.8; }
-
-.font-light {
-  font-weight: 300; }
-
-.font-regular {
-  font-weight: 400; }
-
-.font-heavy {
-  font-weight: 700; }
-
 .left {
   text-align: left; }
 
@@ -116,18 +69,6 @@ p {
 
 .hidden-sm {
   display: none; }
-
-.container {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto; }
-  @media only screen and (min-width: 33.75em) {
-    .container {
-      width: 80%; } }
-  @media only screen and (min-width: 60em) {
-    .container {
-      width: 75%;
-      max-width: 60rem; } }
 
 .yoac__row {
   position: relative;
@@ -233,15 +174,16 @@ p {
   .hidden-sm {
     display: block; } }
 .alc-learn--container {
-  border: 1px solid gray;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   min-height: 500px;
   width: 800px;
-  font-family: Arial, sans-serif;
   background-color: #72BBB6;
   color: #3166C7;
   padding: 24px;
   box-sizing: border-box;
-  font-size: 22px; }
+  font-size: 22px;
+  margin-bottom: 18px; }
 
 .alc-learn--success-message, #alc-learn--dialogue__moral, #alc-learn--reorder__success {
   font-size: 28px;
@@ -254,19 +196,25 @@ p {
 
 .alc-learn--night-out__prompt {
   margin-top: 0;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  line-height: 40px; }
 
 .alc-learn--night-out__response {
   min-width: 300px;
-  border-bottom: 3px solid #3166C7;
   display: inline-block;
-  height: 30px;
-  padding: 0px 4px 19px;
-  margin: 0;
+  border-bottom: 3px solid #3166C7;
+  min-height: 34px;
+  height: 34px;
+  padding: 0px 16px 0px;
   vertical-align: bottom; }
+  .alc-learn--night-out__response.alc-learn-full-width {
+    height: auto;
+    display: block;
+    text-align: center;
+    margin: 11px 0; }
   .alc-learn--night-out__response .alc-learn--night-out__item {
     margin: 0;
-    line-height: 60px;
+    line-height: 18px;
     -webkit-transform: translate(0px, 0px) !important;
     transform: translate(0px, 0px) !important; }
 
@@ -277,16 +225,20 @@ p {
   line-height: 60px;
   padding: 4px 8px;
   position: relative;
-  transition: -webkit-transform .2s, transform .2s;
+  transition: -webkit-transform .8s, transform .8s;
   -webkit-transform: translate(0px, 0px);
-  transform: translate(0px, 0px); }
+  transform: translate(0px, 0px);
+  cursor: pointer; }
+  .alc-learn--night-out__item:hover {
+    text-decoration: underline; }
 
 .alc-learn--night-out__word-cloud {
   text-align: center; }
 
-#alc-learn--dialogue__slide-two {
+#alc-learn--dialogue__slide-one, #alc-learn--dialogue__slide-two, #alc-learn--dialogue__slide-three {
+  font-size: 18px;
   height: 800px;
-  overflow: scroll; }
+  overflow-y: scroll; }
 
 #alc-learn--dialogue__prompt .talk-bubble, #alc-learn--dialogue__answers .talk-bubble {
   display: none; }
@@ -478,6 +430,9 @@ p {
   .alc-learn--reorder__list-item.gu-mirror {
     list-style-type: none; }
 
+#alc-learn--reorder__success {
+  display: none; }
+
 #alc-learn-storyboard__strip {
   height: 210px;
   background-color: rgba(206, 206, 206, 0.39);
@@ -488,15 +443,18 @@ p {
   z-index: 10; }
 
 #alc-learn-storyboard__icon-container {
-  height: 300px;
-  overflow: scroll; }
+  height: 800px;
+  overflow-y: scroll; }
 
 .alc-learn-storyboard__thumb {
-  max-width: 100%; }
+  max-width: 100% !important;
+  cursor: pointer; }
+  .alc-learn-storyboard__thumb:hover {
+    outline: 3px solid #3166C7; }
 
 /* no right side nav */
 .with-right-side #right-side-wrapper {
-  /*display: none; */ }
+  display: none; }
 
 .pages .header-bar-outer-container {
   display: none; }

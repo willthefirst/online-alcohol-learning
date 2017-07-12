@@ -4,15 +4,17 @@
 @import 'mixins';
 
 .alc-learn--container {
-  border: 1px solid gray;
+  border: 1px solid #ccc;
+  border-radius: $border-radius;
   min-height: $container-height;
   width: $container-width;
-  font-family: Arial, sans-serif;
+  // font-family: Arial, sans-serif;
   background-color: $teal;
   color: $blue;
   padding: 24px;
   box-sizing: border-box;
   font-size: 22px;
+  margin-bottom: 18px;
 }
 
 .alc-learn--success-message {
@@ -22,7 +24,7 @@
   padding-right: 20px;
   text-align: center;
   border: 8px solid $blue;
-  border-radius: 8px;
+  border-radius: $border-radius;
 }
 
 //
@@ -31,24 +33,36 @@
 .alc-learn--night-out__prompt {
   margin-top: 0;
   margin-bottom: 50px;
+  line-height: 40px;
 }
 
 .alc-learn--night-out__response {
   min-width: 300px;
-  border-bottom: 3px solid $blue;
   display: inline-block;
-  height: 30px;
-  padding: 0px 4px 19px;
-  margin: 0;
+  border-bottom: 3px solid $blue;
+  min-height: 34px;
+  height: 34px;
+  padding: 0px 16px 0px;
   vertical-align: bottom;
+  // margin-bottom: -4px;
+
+  // For special case when items will take up more than one line (see slide 5)
+  &.alc-learn-full-width {
+    height: auto;
+    display: block;
+    text-align: center;
+    margin: 11px 0;
+  }
 
   .alc-learn--night-out__item {
     margin: 0;
-    line-height: 60px;
+    line-height: 18px;
     -webkit-transform: translate(0px, 0px) !important;
     transform: translate(0px, 0px) !important;
   }
 }
+
+
 
 .alc-learn--night-out__item {
   display: inline-block;
@@ -57,9 +71,14 @@
   line-height: 60px;
   padding: 4px 8px;
   position: relative;
-  transition: -webkit-transform .2s, transform .2s;
+  transition: -webkit-transform .8s, transform .8s;
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .alc-learn--night-out__word-cloud {
@@ -70,9 +89,10 @@
 // Module: Dialogue
 //
 
-#alc-learn--dialogue__slide-two {
+#alc-learn--dialogue__slide-one, #alc-learn--dialogue__slide-two, #alc-learn--dialogue__slide-three {
+  font-size: 18px;
   height: 800px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #alc-learn--dialogue__prompt, #alc-learn--dialogue__answers {
@@ -233,7 +253,7 @@
 .alc-learn--reorder__list-item {
   background-color: $green;
   color: $blue-light;
-  border-radius: 8px;
+  border-radius: $border-radius;
   padding: 8px 16px;
   margin-bottom: 8px;
   cursor: pointer;
@@ -246,7 +266,7 @@
 
 #alc-learn--reorder__success {
   @extend .alc-learn--success-message;
-  // display: none;
+  display: none;
 }
 
 //
@@ -256,7 +276,7 @@
 #alc-learn-storyboard__strip {
   height: 210px;
   background-color: rgba(206, 206, 206, 0.39);
-  border-radius: 8px;
+  border-radius: $border-radius;
   padding: 8px;
   box-sizing: border-box;
   box-shadow: 0 19px 16px $teal;
@@ -264,24 +284,27 @@
 }
 
 #alc-learn-storyboard__icon-container {
-  height: 300px;
-  overflow: scroll;
+  height: 800px;
+  overflow-y: scroll;
 }
 
 .alc-learn-storyboard__thumb {
-  max-width: 100%;
+  max-width: 100% !important; //instructure.com tries to override this max-width
+  cursor: pointer;
+
+  &:hover {
+    outline: 3px solid $blue;
+  }
 }
 
 
-//
 // David's additional styles
-//
+
 
 /* no right side nav */
 .with-right-side #right-side-wrapper {
-    /*display: none; */
+    display: none;
 }
-
 
 .pages .header-bar-outer-container {
     display: none;
@@ -293,5 +316,4 @@
 
 #right-side > div.events_list.coming_up{
     display: none;
-
 }

@@ -16,7 +16,7 @@ $(document).ready(function() {
   }
 
   function allowNext() {
-    alert('Success!')
+    // alert('Success!')
     $nextButton.show();
   }
 
@@ -67,7 +67,7 @@ $(document).ready(function() {
       } else if (dialogue[currLine].moral) {
         // If it's the moral, we've reached the end
         $moralDialogue
-        .html('<h3>' + dialogue[currLine].moral+ '</h3>')
+        .html('<p>' + dialogue[currLine].moral+ '</p>')
         .delay(delayTime)
         .fadeIn(function() {
           allowNext();
@@ -150,8 +150,8 @@ $(document).ready(function() {
 
     // Shift position slightly and change color of each item
     $('.alc-learn--night-out__item').each(function(one, two) {
-      var xChange = Math.random() * 20;
-      var yChange = -(Math.random() * 20);
+      var xChange = Math.random() * 12;
+      var yChange = -(Math.random() * 12);
 
       $(this).css({
         '-webkit-transform': 'translate(' + xChange + 'px, ' + yChange + 'px)',
