@@ -15,10 +15,16 @@
   font-size: 22px;
 }
 
-.gu-mirror {
-  font-family: arial;
-  color: initial;
+.alc-learn--success-message {
+  font-size: 28px;
+  color: $blue;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  border: 8px solid $blue;
+  border-radius: 8px;
 }
+
 //
 // Module: Night Out
 //
@@ -42,9 +48,6 @@
     -webkit-transform: translate(0px, 0px) !important;
     transform: translate(0px, 0px) !important;
   }
-
-
-
 }
 
 .alc-learn--night-out__item {
@@ -108,14 +111,8 @@
 }
 
 #alc-learn--dialogue__moral {
+  @extend .alc-learn--success-message;
   display: none;
-  font-size: 28px;
-  color: $blue;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  border: 8px solid $blue;
-  border-radius: 8px;
 }
 
 // Dialogue bubble code taken from https://codepen.io/Founts/pen/gmhcl
@@ -228,10 +225,28 @@
 //
 // Module: Reorder
 //
+#alc-learn--reorder__list {
+  width: 70%;
+  margin: auto;
+}
+
+.alc-learn--reorder__list-item {
+  background-color: $green;
+  color: $blue-light;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 20px;
+
+  &.gu-mirror {
+    list-style-type: none;
+  }
+}
 
 #alc-learn--reorder__success {
-  display: none;
-  color: green;
+  @extend .alc-learn--success-message;
+  // display: none;
 }
 
 //

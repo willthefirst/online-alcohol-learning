@@ -110,7 +110,6 @@ $(document).ready(function() {
         } else {
           currLine++
         }
-        console.log('abgm');
         stepForward(currLine);
       });
 
@@ -333,7 +332,7 @@ $(document).ready(function() {
     $successMessage = $('#alc-learn--reorder__success');
 
     // Make the elements draggable
-    var drake = dragula([document.getElementById('alc-learn--reorder__list'), document.getElementById('alc-learn--reorder__list')]);
+    var drake = dragula([document.getElementById('alc-learn--reorder__list')]);
 
     // On every drop, if bag has enough element, show next button.
     drake.on('drop', function(el, target, source, sibling) {

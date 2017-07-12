@@ -243,9 +243,14 @@ p {
   box-sizing: border-box;
   font-size: 22px; }
 
-.gu-mirror {
-  font-family: arial;
-  color: initial; }
+.alc-learn--success-message, #alc-learn--dialogue__moral, #alc-learn--reorder__success {
+  font-size: 28px;
+  color: #3166C7;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  border: 8px solid #3166C7;
+  border-radius: 8px; }
 
 .alc-learn--night-out__prompt {
   margin-top: 0;
@@ -369,14 +374,7 @@ p {
     color: #EFCE20; }
 
 #alc-learn--dialogue__moral {
-  display: none;
-  font-size: 28px;
-  color: #3166C7;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  border: 8px solid #3166C7;
-  border-radius: 8px; }
+  display: none; }
 
 .talk-bubble {
   margin: 40px auto 60px;
@@ -465,9 +463,20 @@ p {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em; }
 
-#alc-learn--reorder__success {
-  display: none;
-  color: green; }
+#alc-learn--reorder__list {
+  width: 70%;
+  margin: auto; }
+
+.alc-learn--reorder__list-item {
+  background-color: #667431;
+  color: #C9FDFA;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 20px; }
+  .alc-learn--reorder__list-item.gu-mirror {
+    list-style-type: none; }
 
 #alc-learn-storyboard__strip {
   height: 210px;
