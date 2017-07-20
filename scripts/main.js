@@ -1,4 +1,4 @@
-$(document).ready(function() {
+jQuery(function($) {
   var $nextButton = {};
   var checksMax = 5;
 

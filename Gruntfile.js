@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'scripts/vendor/jquery-3.2.1.min.js',
+          'scripts/vendor/jquery-3.2.1-modified.min.js',
           'scripts/vendor/dragula.min.js',
           'scripts/main.js'
         ],
