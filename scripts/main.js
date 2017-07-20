@@ -123,10 +123,8 @@ jQuery(function($) {
     var colors = [
       'blue',
       'blue-light',
-      'yellow',
       'green',
       'rose',
-      'peach',
       'purple',
       'white-blue',
       'tan',
@@ -349,7 +347,7 @@ jQuery(function($) {
     });
   }
 
-  if ($('#alc-learn--storyboard').length) {
+  if ($('.alc-learn--storyboard').length) {
     // Hide the next button
     hideNext(0);
 

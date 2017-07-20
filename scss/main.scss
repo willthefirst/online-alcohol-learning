@@ -24,12 +24,26 @@
   padding-right: 20px;
   text-align: center;
   border: 8px solid $blue;
+  background-color: $blue-light;
   border-radius: $border-radius;
 }
 
 //
 // Module: Night Out
 //
+
+#alc-learn--night-out__slide-two {
+  background-color: $blue-med;
+}
+
+#alc-learn--night-out__slide-three {
+  background-color: $peach;
+}
+
+#alc-learn--night-out__slide-four {
+  background-color: $pumpkin;
+}
+
 .alc-learn--night-out__prompt {
   margin-top: 0;
   margin-bottom: 50px;
@@ -95,6 +109,55 @@
   overflow-y: scroll;
 }
 
+#alc-learn--dialogue__slide-one {
+  .talk-bubble__color-1 {
+    @include bubble-color($tan, $rose);
+  }
+  .talk-bubble__color-2 {
+    @include bubble-color($rose, $neon);
+  }
+  .talk-bubble__color-3 {
+    @include bubble-color($peach, $rose);
+  }
+  .talk-bubble__color-4 {
+    @include bubble-color($yellow, $green);
+  }
+}
+
+#alc-learn--dialogue__slide-two {
+  background-color: $tan;
+
+  .talk-bubble__color-1 {
+    @include bubble-color($blue-med, $blue-light);
+  }
+  .talk-bubble__color-2 {
+    @include bubble-color($rose, $yellow);
+  }
+  .talk-bubble__color-3 {
+    @include bubble-color($teal-dark, $purple-light);
+  }
+  .talk-bubble__color-4 {
+    @include bubble-color($yellow, $green);
+  }
+}
+
+#alc-learn--dialogue__slide-three {
+  background-color: $peach;
+
+  .talk-bubble__color-1 {
+    @include bubble-color($blue-med, $blue-light);
+  }
+  .talk-bubble__color-2 {
+    @include bubble-color($rose, $yellow);
+  }
+  .talk-bubble__color-3 {
+    @include bubble-color($teal-dark, $purple-light);
+  }
+  .talk-bubble__color-4 {
+    @include bubble-color($yellow, $green);
+  }
+}
+
 #alc-learn--dialogue__prompt, #alc-learn--dialogue__answers {
   .talk-bubble {
     display: none;
@@ -114,19 +177,6 @@
 #alc-learn--dialogue__answers {
   .talk-bubble {
     cursor: pointer;
-  }
-
-  .talk-bubble__color-1 {
-    @include bubble-color($tan, $rose);
-  }
-  .talk-bubble__color-2 {
-    @include bubble-color($rose, $neon);
-  }
-  .talk-bubble__color-3 {
-    @include bubble-color($peach, $rose);
-  }
-  .talk-bubble__color-4 {
-    @include bubble-color($yellow, $green);
   }
 }
 
@@ -273,13 +323,45 @@
 // Module: Storyboard
 //
 
+#alc-learn--storyboard-1 {
+  background-color: $purple;
+
+  #alc-learn-storyboard__strip {
+    box-shadow: 0 19px 16px $purple;
+  }
+}
+
+#alc-learn--storyboard-2 {
+  background-color: $yellow;
+
+  #alc-learn-storyboard__strip {
+    box-shadow: 0 19px 16px $yellow;
+  }
+}
+
+#alc-learn--storyboard-3 {
+  background-color: $blue-light;
+
+  #alc-learn-storyboard__strip {
+    box-shadow: 0 19px 16px $blue-light;
+  }
+}
+
+#alc-learn--storyboard-4 {
+  background-color: $pumpkin;
+
+  #alc-learn-storyboard__strip {
+    box-shadow: 0 19px 16px $pumpkin;
+  }
+}
+
+
 #alc-learn-storyboard__strip {
   height: 210px;
   background-color: rgba(206, 206, 206, 0.39);
   border-radius: $border-radius;
   padding: 8px;
   box-sizing: border-box;
-  box-shadow: 0 19px 16px $teal;
   z-index: 10;
 }
 
