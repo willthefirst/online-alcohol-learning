@@ -144,7 +144,6 @@ jQuery(function($) {
       if ($('.alc-learn--night-out__response').children().length >= nightOutItemsMin) {
         // Specific for Night Out #2
         if ($('#alc-learn--night-out__slide-two').length > 0) {
-          alert('allo govna');
           $('.alc-learn--night-out__word-cloud').fadeOut(function() {
             $('.alc-learn--night-out__success').fadeIn()
           });
@@ -351,7 +350,6 @@ jQuery(function($) {
       }
 
       if (currOrder.toString() === currOrder.slice(0).sort().toString()) {
-        alert('bonk')
         $successMessage.fadeIn(allowNext)
       }
     });

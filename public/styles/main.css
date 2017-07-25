@@ -600,8 +600,7 @@
   padding: 8px;
   box-sizing: border-box;
   z-index: 10;
-  position: relative;
-  overflow-x: scroll; }
+  position: relative; }
 
 .alc-learn-storyboard__strip-instructions {
   margin: auto;
