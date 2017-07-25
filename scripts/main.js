@@ -142,6 +142,15 @@ jQuery(function($) {
     // On every drop, if bag has enough element, show next button.
     drake.on('drop', function(el, target, source, sibling) {
       if ($('.alc-learn--night-out__response').children().length >= nightOutItemsMin) {
+        // Specific for Night Out #2
+        if ($('#alc-learn--night-out__slide-two').length > 0) {
+          alert('allo govna');
+          $('.alc-learn--night-out__word-cloud').fadeOut(function() {
+            $('.alc-learn--night-out__success').fadeIn()
+          });
+        }
+
+        // General
         allowNext();
       }
     });
@@ -332,7 +341,7 @@ jQuery(function($) {
     // Make the elements draggable
     var drake = dragula([document.getElementById('alc-learn--reorder__list')]);
 
-    // On every drop, if bag has enough element, show next button.
+    // On every drop, check for correct order, if good, allowNext
     drake.on('drop', function(el, target, source, sibling) {
       var listItems = $('#alc-learn--reorder__list').children();
       var currOrder = [];
@@ -342,6 +351,7 @@ jQuery(function($) {
       }
 
       if (currOrder.toString() === currOrder.slice(0).sort().toString()) {
+        alert('bonk')
         $successMessage.fadeIn(allowNext)
       }
     });
@@ -358,6 +368,8 @@ jQuery(function($) {
 
     // On every drop, if bag has enough element, show next button.
     drake.on('drop', function(el, target, source, sibling) {
+      $('.alc-learn-storyboard__strip-instructions').fadeOut();
+
       if ($('#alc-learn-storyboard__strip').children().length >= storyboardMin) {
         allowNext();
       }

@@ -58,7 +58,6 @@
   height: 34px;
   padding: 0px 16px 0px;
   vertical-align: bottom;
-  // margin-bottom: -4px;
 
   // For special case when items will take up more than one line (see slide 5)
   &.alc-learn-full-width {
@@ -76,14 +75,12 @@
   }
 }
 
-
-
 .alc-learn--night-out__item {
   display: inline-block;
   margin: 16px 16px 16px 0;
   font-size: 28px;
-  line-height: 60px;
-  padding: 4px 8px;
+  line-height: 30px;
+  padding: 0px 8px;
   position: relative;
   transition: -webkit-transform .8s, transform .8s;
   -webkit-transform: translate(0px, 0px);
@@ -97,6 +94,11 @@
 
 .alc-learn--night-out__word-cloud {
   text-align: center;
+}
+
+.alc-learn--night-out__success {
+  @extend .alc-learn--success-message;
+  display: none;
 }
 
 //
@@ -327,7 +329,7 @@
   background-color: $purple;
 
   #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px $purple;
+    box-shadow: 0 19px 16px $purple, 0 0px 5px 1px #616161 inset;
   }
 }
 
@@ -335,7 +337,7 @@
   background-color: $yellow;
 
   #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px $yellow;
+    box-shadow: 0 19px 16px $yellow, 0 0px 5px 1px #616161 inset;
   }
 }
 
@@ -343,7 +345,7 @@
   background-color: $blue-light;
 
   #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px $blue-light;
+    box-shadow: 0 19px 16px $blue-light, 0 0px 5px 1px #616161 inset;
   }
 }
 
@@ -351,18 +353,30 @@
   background-color: $pumpkin;
 
   #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px $pumpkin;
+    box-shadow: 0 19px 16px $pumpkin, 0 0px 5px 1px #616161 inset;
   }
 }
 
 
 #alc-learn-storyboard__strip {
-  height: 210px;
-  background-color: rgba(206, 206, 206, 0.39);
+  min-height: 210px;
+  background-color: rgba(101, 101, 101, 0.29);
   border-radius: $border-radius;
   padding: 8px;
   box-sizing: border-box;
   z-index: 10;
+  position: relative;
+  overflow-x: scroll;
+}
+
+.alc-learn-storyboard__strip-instructions {
+  margin: auto;
+  text-align: center;
+  margin-top: 80px;
+  color: #555;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
 }
 
 #alc-learn-storyboard__icon-container {
