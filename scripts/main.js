@@ -190,7 +190,7 @@ jQuery(function($) {
       },
       {
         label: 'tired_agree',
-        moral: 'You don’t have be the ones to shut down the party!  If you’re ready to leave, do it.  You could head back to your suite to catch up on your favorite shows – or better yet, actually get some sleep.'
+        moral: 'You don’t have to shut down the party!  If you’re ready to leave, do it.  You could head back to your suite to catch up on your favorite shows – or better yet, actually get some sleep.'
       },
       {
         label: 'tired_cory',
@@ -229,20 +229,20 @@ jQuery(function($) {
           prompt: 'C’mon, we don’t want you to miss out!',
           answers: [
             {
-              m: "I’m still gonna hang, but I actually don’t drink.",
-              next: 'shots_moral'
+              m: "I’m still gonna hang, but I don’t drink.",
+              next: 'shots_moral_easy'
             },
             {
               m: "Nah, I’m tryna hook up tonight.",
-              next: 'shots_moral'
+              next: 'shots_moral_sober'
             },
             {
               m: "I’m heading out. Maybe next time.",
-              next: 'shots_moral'
+              next: 'shots_moral_call'
             },
             {
               m: "Nope, not tonight.",
-              next: 'shots_moral'
+              next: 'shots_moral_easy_alt'
             }
           ]
         },
@@ -252,11 +252,11 @@ jQuery(function($) {
           answers: [
             {
               m: "I would, but I’m feeling pretty good about this beer.",
-              next: 'shots_moral'
+              next: 'shots_moral_shots'
             },
             {
               m: "I’m chillin’. I’ve got stuff to do tomorrow.",
-              next: 'shots_moral'
+              next: 'shots_moral_plans'
             },
             {
               m: "Nah, I’m tryna hook up tonight.",
@@ -264,7 +264,7 @@ jQuery(function($) {
             },
             {
               m: "I’m heading out, maybe next time?",
-              next: 'shots_moral'
+              next: 'shots_moral_call'
             }
           ]
         },
@@ -274,21 +274,45 @@ jQuery(function($) {
           answers: [
             {
               m: "Me either, but I’ll catch you this weekend.",
-              next: 'shots_moral'
+              next: 'shots_moral_call'
             },
             {
               m: "Nah, I’m tryna hook up tonight.",
-              next: 'shots_moral'
+              next: 'shots_moral_mindful'
             },
             {
               m: "Way too tired. See ya around.",
-              next: 'shots_moral'
+              next: 'shots_moral_call'
             }
           ]
         },
         {
-          label: 'shots_moral',
-          moral: 'People set limits on their drinking or choose not to drink for a variety of reasons. These reasons can change and evolve over time. Thinking about what you want to get out of your night can prepare you to make decisions in the moment.'
+          label: 'shots_moral_easy',
+          moral: 'Great answer! It might not be easy to tell, but there are lots of students who choose not to drink on campus and still have active social lives. Setting those boundaries doesn’t mean that you can’t still hang out with friends who are drinking and have a good time!'
+        },
+        {
+          label: 'shots_moral_sober',
+          moral: "Good thinking! Sober (or relatively sober) hookups allow you to be more attentive to your partner's desires. That’s more fun for everyone!"
+        },
+        {
+          label: 'shots_moral_call',
+          moral: "Good call! You shouldn’t have to leave a gathering because of pressure from others, but if you feel uncomfortable, that’s always an option. Better to find someplace where your decisions are respected!"
+        },
+        {
+          label: 'shots_moral_easy_alt',
+          moral: "That’s great! It might not be easy to tell, but there are lots of students who choose not to drink, either on some nights or always, and who still have active social lives. Setting those boundaries doesn’t mean that you can’t still hang out with friends who are drinking and have a good time!"
+        },
+        {
+          label: 'shots_moral_shots',
+          moral: "That’s great! It might not be easy to tell, but there are lots of students who choose not to drink, either on some nights or always, and who still have active social lives. Setting those boundaries doesn’t mean that you can’t still hang out with friends who are drinking and have a good time!"
+        },
+        {
+          label: 'shots_moral_plans',
+          moral: "Great response – whether or not you actually have big plans for tomorrow. If you do, it’s smart to slow down on drinking, since heavy drinking can affect sleep quality and a hangover is generally bad news for next day tasks. And even if you don’t have plans, saying so can be a good way to deflect pressure."
+        },
+        {
+          label: 'shots_moral_mindful',
+          moral: "Good thinking! If you drink, you should extra mindful of your actions and interactions with others. Plus, heavy drinking will seriously detract from a hookup. Staying sober means it’s easy to be more attentive to your partner's desires–and that’s more fun for everyone!"
         }
       ]
     )
@@ -301,31 +325,31 @@ jQuery(function($) {
         prompt: 'This week sucked. I’m going so hard tonight. Can’t wait to turn up.',
         answers: [
           {
-            m: 'Wow. Sounds like you could actually use a low key night. Want to stay in instead?',
+            m: 'Wow. Sounds like you had a rough week. Any chance you wanna do a low key night with me instead? Maybe stay in and watch a movie?',
             next: 'hard_stay'
           },
           {
-            m: 'I’m pumped for tonight too. Let’s get dinner and talk about your week before we go.',
+            m: 'I’m pumped for tonight too. Sorry to hear about your week! Wanna grab dinner and talk about it before?',
             next: 'hard_dinner'
 
           },
           {
-            m: 'I want you to let out some steam, for sure.  But you’ve been feeling this way a lot lately.  I’m kind of worried about you.',
+            m: 'I want you to let out some steam, for sure.  But I feel like I’ve heard this from a you a lot lately. I’m kind of worried about you.',
             next: 'hard_steam'
           }
         ]
       },
       {
         label: 'hard_stay',
-        moral: 'it’s worrying – you might not feel like you can address it directly, but proposing alternatives can help.  resources… '
+        moral: 'Great answer! It can be worrying to hear a friend use alcohol as a coping mechanism. Sometimes it feels hard to address it directly, but proposing alternatives can help. If you continue to be concerned, Yale has many resources, including your residential college Dean and FroCo, to help students who are stressed for any reason.'
       },
       {
         label: 'hard_dinner',
-        moral: 'okay to party – but it sounds like your friend needs help in a way that alcohol can’t provide --  parties are often not the best places for support – make time beforehand to find out what’s going on with your friend -- '
+        moral: 'Good thinking! Parties can be fun, but often aren’t the best places for the kind of support it sounds like your friend is looking for. Making time with them beforehand to find out what’s going on can be a good way to check in and provide help they need.  If you feel that they need more, Yale has many resources, including your residential college Dean and FroCo, to help students who are stressed for any reason.'
       },
       {
         label: 'hard_steam',
-        moral: 'sometimes it’s good to share your concern out loud – you might be validating your friend’s own worries, and help them take positive steps. resources are… '
+        moral: 'Good thinking! Sometimes it’s good to share your concern out loud – you might be validating your friend’s own worries, and help them take positive steps. Those might include reaching out to some of Yale’s many resources, including your residential college Dean and FroCo, who are there to help students who are stressed for any reason.'
       }
     ])
   }
