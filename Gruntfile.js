@@ -45,6 +45,17 @@ module.exports = function(grunt) {
         }]
       }
     },
+    postcss: {
+      options: {
+        map: true, // inline sourcemaps
+        processors: [
+          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+        ]
+      },
+      dist: {
+        src: 'public/styles/*.css'
+      }
+    },
     watch: {
       scripts: {
         files: ['scripts/*'],
@@ -55,7 +66,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['scss/*.scss'],
-        tasks: ['sass'],
+        tasks: ['sass', 'postcss'],
         options: {
           livereload: LIVERELOAD_PORT,
         },
@@ -68,6 +79,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).

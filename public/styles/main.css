@@ -181,7 +181,8 @@
   background-color: #72bbb6;
   color: #3166c7;
   padding: 24px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 22px;
   margin-bottom: 18px; }
 
@@ -484,11 +485,19 @@
     right: -40px;
     top: 50%;
     margin-top: -19px;
-    animation: back-and-forth 1s ease-out infinite; }
+    -webkit-animation: back-and-forth 1s ease-out infinite;
+            animation: back-and-forth 1s ease-out infinite; }
   .talk-bubble.yoac__selected .yoac-choose {
     display: none; }
 
 /* The animation code */
+@-webkit-keyframes back-and-forth {
+  from {
+    -webkit-transform: translateX(0); }
+  50% {
+    -webkit-transform: translateX(-5px); }
+  100% {
+    -webkit-transform: translateX(0); } }
 @keyframes back-and-forth {
   from {
     -webkit-transform: translateX(0); }
@@ -576,29 +585,34 @@
 #alc-learn--storyboard-1 {
   background-color: #f8aefe; }
   #alc-learn--storyboard-1 #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px #f8aefe, 0 0px 5px 1px #616161 inset; }
+    -webkit-box-shadow: 0 19px 16px #f8aefe, 0 0px 5px 1px #616161 inset;
+            box-shadow: 0 19px 16px #f8aefe, 0 0px 5px 1px #616161 inset; }
 
 #alc-learn--storyboard-2 {
   background-color: #efce20; }
   #alc-learn--storyboard-2 #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px #efce20, 0 0px 5px 1px #616161 inset; }
+    -webkit-box-shadow: 0 19px 16px #efce20, 0 0px 5px 1px #616161 inset;
+            box-shadow: 0 19px 16px #efce20, 0 0px 5px 1px #616161 inset; }
 
 #alc-learn--storyboard-3 {
   background-color: #c9fdfa; }
   #alc-learn--storyboard-3 #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px #c9fdfa, 0 0px 5px 1px #616161 inset; }
+    -webkit-box-shadow: 0 19px 16px #c9fdfa, 0 0px 5px 1px #616161 inset;
+            box-shadow: 0 19px 16px #c9fdfa, 0 0px 5px 1px #616161 inset; }
 
 #alc-learn--storyboard-4 {
   background-color: #f5ac5a; }
   #alc-learn--storyboard-4 #alc-learn-storyboard__strip {
-    box-shadow: 0 19px 16px #f5ac5a, 0 0px 5px 1px #616161 inset; }
+    -webkit-box-shadow: 0 19px 16px #f5ac5a, 0 0px 5px 1px #616161 inset;
+            box-shadow: 0 19px 16px #f5ac5a, 0 0px 5px 1px #616161 inset; }
 
 #alc-learn-storyboard__strip {
   min-height: 210px;
   background-color: rgba(101, 101, 101, 0.29);
   border-radius: 8px;
   padding: 8px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   z-index: 10;
   position: relative; }
 
