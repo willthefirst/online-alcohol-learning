@@ -1,10 +1,16 @@
-# Files are built to the public folder
+# How to add files to Canvas
 
-index.html contains the HTML for each modules
-scripts/built.min.js is the minified JS file to ulpoad
-styles/main.css is the build CSS file
+For the HTML specific to each module:
 
-For editing, edit CSS in the SCSS folder, and JS in scripts/main.js.
+public/index.html
+
+For the JS:
+
+public/scripts/built.min.js
+
+For the CSS:
+
+public/styles/main.css
 
 # Running in development
 
