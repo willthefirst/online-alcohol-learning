@@ -1,3 +1,7 @@
+# Latest version
+
+Default (with Yale Online Alcohol Learning JS/CSS - 7/25/17)
+
 # How to add files to Canvas
 
 For the HTML specific to each module:
