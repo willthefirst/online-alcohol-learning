@@ -125,7 +125,7 @@ jQuery(function($) {
       'blue-light',
       'green',
       'rose',
-      'purple',
+      'teal-dark',
       'white-blue',
       'tan',
       'neon'

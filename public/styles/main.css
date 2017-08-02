@@ -1,5 +1,5 @@
 .yoac-blue {
-  color: #3166c7; }
+  color: #204486; }
 
 .yoac-blue-light {
   color: #c9fdfa; }
@@ -179,7 +179,7 @@
   min-height: 500px;
   width: 800px;
   background-color: #72bbb6;
-  color: #3166c7;
+  color: #204486;
   padding: 24px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -188,11 +188,11 @@
 
 .alc-learn--success-message, .alc-learn--night-out__success, #alc-learn--dialogue__moral, #alc-learn--reorder__success {
   font-size: 28px;
-  color: #3166c7;
+  color: #204486;
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
-  border: 8px solid #3166c7;
+  border: 8px solid #204486;
   background-color: #c9fdfa;
   border-radius: 8px; }
 
@@ -213,7 +213,7 @@
 .alc-learn--night-out__response {
   min-width: 300px;
   display: inline-block;
-  border-bottom: 3px solid #3166c7;
+  border-bottom: 3px solid #204486;
   min-height: 34px;
   height: 34px;
   padding: 0px 16px 0px;
@@ -565,6 +565,9 @@
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em; }
 
+#alc-learn--reorder {
+  color: #204486; }
+
 #alc-learn--reorder__list {
   width: 70%;
   margin: auto; }
@@ -634,7 +637,7 @@
   max-width: 100% !important;
   cursor: pointer; }
   .alc-learn-storyboard__thumb:hover {
-    outline: 3px solid #3166c7; }
+    outline: 3px solid #204486; }
 
 /* no right side nav */
 .with-right-side #right-side-wrapper {
