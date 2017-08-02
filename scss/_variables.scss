@@ -19,6 +19,7 @@ $white-blue: #eaffff;
 $tan: #ecdfa4;
 $neon: #76fea7;
 $pumpkin: #f5ac5a;
+$pumpkin-dark: #9a5600;
 
 .yoac-blue {
   color: $blue;
@@ -62,4 +63,11 @@ $pumpkin: #f5ac5a;
 
 .yoac-neon {
   color: $neon;
+}
+
+.yoac-pumpkin {
+  color: $pumpkin;
+}
+.yoac-pumpkin-dark {
+  color: $pumpkin-dark;
 }

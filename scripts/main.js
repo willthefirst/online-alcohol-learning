@@ -128,7 +128,7 @@ jQuery(function($) {
       'teal-dark',
       'white-blue',
       'tan',
-      'neon'
+      'pumpkin-dark'
     ];
 
     // Hide the next button
