@@ -260,7 +260,7 @@ jQuery(function($) {
             },
             {
               m: "Nah, I’m tryna hook up tonight.",
-              next: 'shots_moral'
+              next: 'shots_moral_sober'
             },
             {
               m: "I’m heading out, maybe next time?",
