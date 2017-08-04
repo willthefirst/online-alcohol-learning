@@ -645,17 +645,4 @@
   .alc-learn-storyboard__thumb:hover {
     outline: 3px solid #204486; }
 
-/* no right side nav */
-.with-right-side #right-side-wrapper {
-  display: none; }
-
-.pages .header-bar-outer-container {
-  display: none; }
-
-#course_show_secondary {
-  display: none; }
-
-#right-side > div.events_list.coming_up {
-  display: none; }
-
 /*# sourceMappingURL=main.css.map */
